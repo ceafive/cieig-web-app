@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+
+<div class="container">
+<div class="row">
+<h1 class="text-center">
+	<strong>Upload New Data!</strong>
+</h1>
+
+<form class="form center-block" ref='uploadForm' id='uploadForm' action="/results" method='POST' encType="multipart/form-data">
+	<div class="form-group">
+    <label class="big" for="InputFile">File input</label>
+    <input class="form-control input-lg" type="file" name="file" id="InputFile">
+    <p class="help-block">Upload .csv File Here</p>
+  </div>
+  <button class="btn btn-primary btn-block">Submit</button>
+</form>
+
+<p class="text-center"><a  href="/results">Go Back</a></p>
+
+</div>	
+</div>
+
+<% include partials/footer %>

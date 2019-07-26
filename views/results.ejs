@@ -1,0 +1,121 @@
+<% include partials/header %>
+
+<div class="container text-center">
+<header class="jumbotron">
+	<div class="container">
+		<img class="mySlides img-rounded img-responsive" src="../images/banner_1.jpg" alt="banner">
+		<img class="mySlides img-rounded img-responsive" src="../images/banner_2.jpg" alt="banner">
+	</div>
+</header>
+	<% if(currentUser && currentUser.isAdmin){ %>
+			<p><a class="btn btn-primary" href=/results/new>Upload New Data</a></p>
+	<% } %>
+<% if(currentUser){ %>	
+<form class="form-inline" action="/results" method="GET">
+	<div class="form-group">
+		<label for="month">Month</label>
+		<select id="month" name="month" class="form-control">
+			<option>January</option>
+			<option>February</option>
+			<option>March</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="year">Year</label>
+		<select id="year" name="year" class="form-control">
+			<option>2019</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="construction-item">Construction Item</label>
+		<select id="month" name="description" class="form-control">
+			<option>Site Clearance-Manual</option>
+			<option>Site Clearance-Machine</option>
+			<option>Earthworks-Manual</option>
+			<option>Earthworks-Machine</option>
+			<option>Filling and Compacting-Manual</option>
+			<option>Filling and Compacting-Machine</option>
+			<option>Concrete Work-Using crushed agg.</option>
+			<option>Concrete Work-Using lcoal all-in-agg/hand broken</option>
+			<option>Concrete Work-Reinforcement</option>
+			<option>Concrete Work-Formwork</option>
+			<option>Brickwork/Blockwork/Roofing-Handmoulding</option>
+			<option>Brickwork/Blockwork/Roofing-Plant</option>
+			<option>Brickwork/Blockwork/Roofing-Blockwork</option>
+			<option>Brickwork/Blockwork/Roofing-Roofing-in Alum. Covering</option>
+			<option>Woodwork-Carcassing-roof str. Etc.</option>
+			<option>Woodwork-Joinery-frame</option>
+			<option>Woodwork-Doors and fittings</option>
+			<option>Woodwork-Ironmongery</option>
+			<option>Metalwork-Louvre Carriers</option>
+			<option>Metalwork-Bar burglar proof</option>
+			<option>Metalwork-Structural Steelwork</option>
+			<option>Plumbing Works-PVC pipes Plastic T and G</option>
+			<option>Plumbing Works-Copper pipes</option>
+			<option>Plumbing Works-1st fixing fittings</option>
+			<option>Plumbing Works-Installed fittings</option>
+			<option>Plumbing Works-Machine Motors/Machines</option>
+			<option>Electrical Works-Cable Conductors</option>
+			<option>Electrical Works-Fittings - Light</option>
+			<option>Electrical Works-AC/Lift/Equipment</option>
+			<option>Finishes-In-situ cement + Sand Screed + rendering</option>
+			<option>Finishes-Wall + floor tiles</option>
+			<option>Finishes-Plywood ceiling</option>
+			<option>Finishes-Glazing</option>
+			<option>Finishes-Painting</option>
+			<option>Road Works-Compacted base/sub</option>
+			<option>Road Works-MC2</option>
+			<option>Road Works-S125 + Chippings</option>
+			<option>Road Works-Asphalt</option>
+			<option>Road Works-Haulage</option>
+			<option>Road Works-Preliminaries/Gen. Items</option>
+			<option>Road Works-Composite - 2BR affordable house 100m² floor Area</option>
+			<option>Road Works-Anodized Alu. Framed glazed window</option>
+			<option>Road Works-Metal framed sheet glass curtain wall</option>
+			<option>General Construction-Road base prime sealing with 6mm Pre-coated aggr.</option>
+			<option>General Construction-Composite - 2Storey RC frame building</option>
+			<option>General Construction-Composite - 3Storey RC frame building</option>
+			<option>General Construction-Composite - 4Storey RC frame building</option>
+		</select>
+	</div>
+  <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+</form>
+	
+<div class="table-responsive">	
+<table class="table table-striped table-bordered"> 
+	<h3>Results</h3>
+	<thead>
+		<th class="text-center">Month</th> 
+		<th class="text-center">Year</th> 
+		<th class="text-center">Description</th>
+		<th class="text-center">Cost Index</th>
+	<% if(currentUser && currentUser.isAdmin){ %>
+		<th class="text-center">Admin</th>
+	<% } %>
+	<thead>
+		<tbody>
+	<% results.forEach(function(result){ %>
+			<tr> 
+				<td><%= result.month %></td>
+				<td><%= result.year %></td>
+				<td><%= result.description %></td>
+				<td class="text-format"><%= result.costIndex %></td>
+		<% if(currentUser && currentUser.isAdmin){ %>
+				<td>
+					<form class="form" action="/results/<%= result._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-danger btn-xs text-center">Delete</button>
+					</form>
+				</td>
+		<% } %>
+			</tr>
+	<% }); %>
+		</tbody>
+</table>
+</div>
+<% } %>
+	<!-- <a href="#top"><span class="glyphicon glyphicon-chevron-up"></span>Top</a> -->
+
+</div>
+
+
+<% include partials/footer %>
