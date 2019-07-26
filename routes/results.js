@@ -69,7 +69,7 @@ Result.create(jsonObj, function (err, data) {
     });
 });
 		    console.log('File Uploaded!');
-			res.redirect("back");
+			res.redirect("/results");
 		}
   });
 });
