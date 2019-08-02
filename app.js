@@ -1,6 +1,5 @@
 const express = require("express"),
 	fileUpload = require('express-fileupload'),
-	cookieParser = require('cookie-parser'),
 	session = require("express-session"),
 	MongoStore = require('connect-mongo')(session),
 	mongoose = require("mongoose"),
@@ -44,7 +43,6 @@ app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/'
 }));
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
