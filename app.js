@@ -1,6 +1,8 @@
-let express = require("express"),
+const express = require("express"),
 	fileUpload = require('express-fileupload'),
+	cookieParser = require('cookie-parser'),
 	session = require("express-session"),
+	MongoStore = require('connect-mongo')(session),
 	mongoose = require("mongoose"),
 	bodyParser = require("body-parser"),
 	flash = require("connect-flash"),
@@ -28,13 +30,13 @@ mongoose.connect(URI, {useNewUrlParser: true, useFindAndModify: false, useCreate
 mongoose.Promise = global.Promise;
 
 // REQUIRE RESULTS SCHEMA
-let Result = require("./models/results");
+const Result = require("./models/results");
 
 //REQUIRE USER SCHEMA
-let User = require("./models/users");
+const User = require("./models/users");
 
 //REQUIRE ROUTES
-let resultsRoutes = require("./routes/results"),
+const resultsRoutes = require("./routes/results"),
 	indexRoutes = require("./routes/index");
 
 app.set("view engine", "ejs");
@@ -42,6 +44,7 @@ app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/'
 }));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
@@ -49,10 +52,10 @@ app.use(express.static(__dirname + "/public"));
 app.use(flash());
 
 app.use(session({
-	cookie: { maxAge: 60000 },
 	secret: "CIEIG",
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	store: new MongoStore({ mongooseConnection: mongoose.connection, ttl: 24 * 60 * 60 })
 }));
 
 app.use(passport.initialize());
@@ -72,6 +75,8 @@ app.use(function(req, res, next){
 
 app.use(resultsRoutes);
 app.use(indexRoutes);
+
+
 
 
 // PORT LISTEN
