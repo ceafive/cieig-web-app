@@ -24,33 +24,14 @@ router.get("/results", isLoggedIn, function(req, res){
 	
 
 // NEW RESULT FORM
-router.get("/results/new", isLoggedIn, function(req, res){
+router.get("/results/new", checkAuthorization, function(req, res){
 	res.render("new");
 });
 
-// CREATE NEW DATA 
-// router.post("/results", isLoggedIn, function(req, res){
-// 	req.body.data.month = req.sanitize(req.body.data.month);
-// 	req.body.data.year = req.sanitize(req.body.data.year);
-// 	req.body.data.costIndex = req.sanitize(req.body.data.costIndex);
-// 	req.body.data.description = req.sanitize(req.body.data.description);
-// 	req.body.data.user = {
-// 				id: req.user.id,
-// 				username: req.user.username
-// 	};
-// 	Result.create(req.body.data, function(err, result){
-// 	if(err){
-// 		console.log(err);
-// 		console.log(req.body.data);
-// 	}else {
-// 		res.redirect("back");
-// 	}
-// });
-// });
 
 // ADD NEW DATA 
-router.post('/results', isLoggedIn, function(req, res) {
-  // The name of the input field (i.e. "data") is used to retrieve the uploaded file
+router.post('/results', checkAuthorization, function(req, res) {
+  // The name of the input field (i.e. "file") is used to retrieve the uploaded file
   let file = req.files.file;
   // Use the mv() method to place the file somewhere on your server
   file.mv('./public/files/data.csv', function(err) {
@@ -85,10 +66,12 @@ router.delete("/results/:id", function(req, res){
 	});
 });
 
-// ABOUT US
-router.get("/contact", function(req, res){
-	res.render("contact");
+// SERVICES
+router.get("/services", function(req, res){
+	res.render("services");
 });
+
+
 
 //AUTHENTICATE USER
 function isLoggedIn(req, res, next){
@@ -97,6 +80,29 @@ function isLoggedIn(req, res, next){
 	}
 		req.flash("error", "Please Login First");
 		res.redirect("/login");
+}
+
+//CHECK AUTHORIZATION
+function checkAuthorization(req, res, next){
+		if(req.isAuthenticated()){
+			Result.find({}, function(err, results){
+		if(err || !results){
+			req.flash("error", "Data Not Found");
+			res.redirect("back");
+		}else{
+			if(req.user && req.user.isAdmin){
+				next();
+			}else{
+				req.flash("error", "Unauthorized Request. Sign In As Admin");
+				res.redirect("/results");
+			}
+			
+		}
+	});
+	}else{
+		req.flash("error", "Please Login First");
+		res.redirect("/login");
+	}
 }
 
 module.exports = router;

@@ -15,8 +15,8 @@ const express = require("express"),
 
 
 dotenv.config();
-const URI = process.env.MONGODB_URI;
-// const URI = process.env.LOCALDB_URI
+// const URI = process.env.MONGODB_URI;
+const URI = process.env.LOCALDB_URI;
 
 // CONNECT mongoDB DATABASE TO EXPRESS SERVER
 // CONNECT APP TO MONGODB DB
@@ -53,7 +53,7 @@ app.use(session({
 	secret: "CIEIG",
 	resave: false,
 	saveUninitialized: false,
-	store: new MongoStore({ mongooseConnection: mongoose.connection, ttl: 24 * 60 * 60 })
+	store: new MongoStore({ mongooseConnection: mongoose.connection, ttl: 2 * 60 * 60 })
 }));
 
 app.use(passport.initialize());

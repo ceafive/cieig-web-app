@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
     <title>CIEIG</title>
@@ -30,21 +31,22 @@
       <ul class="nav navbar-nav navbar-right">
 		<% if(!currentUser){ %>
 		  	<li><a href="https://www.ghanaconstructionnews.com">News</a></li>
-		    <li><a href="/contact">Contact Us</a></li>
+		    <li><a href="/services">Services</a></li>
+		  	<li><a href="#">Clients</a></li>
 		 	<li><a href="/register">Register</a></li>
 		  	<a class="btn btn-success navbar-btn" href="/login">Login</a>
 		<% }else if(currentUser && currentUser.isAdmin){ %>
 			<li><a class="small text-capitalize" href="#">Signed In As: <kbd>Administrator</kbd></a></li>
 			<li><a href="/results">Cost Indices</a></li>
 		  	<li><a href="https://www.ghanaconstructionnews.com">News</a></li>
-			<li><a href="/contact">Contact Us</a></li>
+			<li><a href="/services">Services</a></li>
 			<li><a href="#">Clients</a></li>
 			<a class="btn btn-danger navbar-btn" href="/logout">Logout</a>
 		<%} else { %>
 			<li><a class="small text-capitalize" href="#">Signed In As: <kbd><%= currentUser.username %></kbd></a></li>
 		  	<li><a href="/results">Cost Indices</a></li>
 		  	<li><a href="https://www.ghanaconstructionnews.com">News</a></li>
-			<li><a href="/contact">Contact Us</a></li>
+			<li><a href="/services">Services</a></li>
 			<li><a href="#">Clients</a></li>
 			<a class="btn btn-danger navbar-btn" href="/logout">Logout</a>
 		<% } %>

@@ -6,15 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">	
-	<link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900&display=swap" rel="stylesheet">
 	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/stylesheets/landing.css">
     <title>CIEIG</title>
 </head>
 <body>
-	
-<div class="landing">
-	<nav class="navbar navbar-default">
+<a name="top"></a>	
+<section class="landing">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -32,41 +33,38 @@
       <ul class="nav navbar-nav navbar-right">
 		<% if(!currentUser){ %>
 		  	<li><a href="https://www.ghanaconstructionnews.com">News</a></li>
-		  	<li><a href="/contact">Contact Us</a></li>
+		    <li><a href="/services">Services</a></li>
+		 	<li><a href="#">Clients</a></li>
+		 	<li><a href="/register">Register</a></li>
+		  	<a class="btn btn-success navbar-btn" href="/login">Login</a>
 		<% }else if(currentUser && currentUser.isAdmin){ %>
 			<li><a href="/results">Cost Indices</a></li>
 		  	<li><a href="https://www.ghanaconstructionnews.com">News</a></li>
-			<li><a href="/contact">Contact Us</a></li>
+			<li><a href="/services">Services</a></li>
 			<li><a href="#">Clients</a></li>
-			<a href="/logout"><span class="btn btn-danger navbar-btn">Logout</span></a>
+			<a class="btn btn-danger navbar-btn" href="/logout">Logout</a>
 		<%} else { %>
 		  	<li><a href="/results">Cost Indices</a></li>
 		  	<li><a href="https://www.ghanaconstructionnews.com">News</a></li>
-			<li><a href="/contact">Contact Us</a></li>
+			<li><a href="/services">Services</a></li>
 			<li><a href="#">Clients</a></li>
-			<a href="/logout"><span class="btn btn-danger navbar-btn">Logout</span></a>
+			<a class="btn btn-danger navbar-btn" href="/logout">Logout</a>
 		<% } %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 	
-	
 <div class="main">
-<div class="row">
-	<div class="container">
-		<div class="landing-left col-xs-12 col-md-6">
-			<h3>Construction Industry Efficiency Improvement Group</h3>
-			<% if(!currentUser){ %>
-				<a class="btn btn-default" href="/register">Register</a>
-				<a class="btn btn-success" href="/login">Login</a>
-			<% } %>
-		</div>
-		<div class="landing-right col-xs-12 col-md-6">
-			<p class="lead text-right">
-				Construction Exchange is a professional entity with the objective of being the Gateway to world class solutions for the construction industry in Ghana. Run by a group of construction professionals and allied professions, we seek to be a one stop online portal for the construction industry. Over the last four years we have earned a reputation of being client focused and an incubator for well needed solutions to the construction industry. We have been at the forefront of revolutionizing the construction industry with bespoke products and services.
-			</p>
-			<div class="pull-right">
+<div class="container">
+	<div class="row">
+ 		<div class="col-md-9">
+			<h1 class="animated zoomInRight">Construction Industry Efficiency Improvement Group</h1>
+			<p class="animated slideInUp">Construction Exchange is a professional entity with the objective of being the gateway to world class solutions for the construction 					industry in Ghana. Run by a group of construction professionals and allied professions, we seek to be a one stop online portal forthe construction industry....</p>
+			<a class="btn btn-default btn-lg animated slideInUp delay-1s" href="#down" role="button">Read More</a>
+ 		</div>	
+		<div class="col-md-3">
+			<div class="socials pull-right">
 				<a href="http://www.facebook.com/constructionexchangegh"><i class="icon ion-logo-facebook"></i></a>
 				<a href="http://www.twitter.com/constructionexchangegh"><i class="icon ion-logo-twitter"></i></a>
 				<a href="mailto:cieig.indices@gmail.com?subject=Enquiry"><i class="icon ion-md-mail"></i></a>
@@ -75,9 +73,44 @@
 	</div>
 </div>
 </div>
+</section>
 	
-</div>	
-				<p class="lead text-center">
-					Copyright © 2011-2019 Construction Exchange.
-				</p>
+
+<a name="down"></a>	
+<section class="landing-2">
+<div class="container">
+	<div class="row">
+ 		<div class="col-md-7">
+			<h1>Up-To-Date<br>
+				Precise Data<br>
+				Excellent Resource
+			</h1>
+			<p>
+				We provide project specific solutions to meet the needs of our clients. Our services have been utilised by clients from various industries such as:</p>
+				<ul>
+				  <li>Mining</li>
+				 <li>Construction and Engineering (both contractors and consultants)</li>
+				  <li>Educational</li>
+				  <li>Manufacturing</li>
+				  <li>Religious</li>
+				  <li>Local Government etc</li>
+				</ul>
+			
+				<span class="number text-center">8</span>
+				<span class="text-primary">years</span>
+				<span class="number text-center">47</span>
+				<span class="text-primary">search criteria</span>
+				<span class="number text-center">1908</span>
+				<span class="text-primary">cost indices</span>
+ 		</div>	
+		<div class="col-md-5">
+			<img class="mySlides img-construction animated slideInRight img-rounded img-responsive" src="https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" alt='Image'>
+			<img class="mySlides img-construction animated slideInRight img-rounded img-responsive" src="https://images.unsplash.com/photo-1551711974-faf378be34b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" alt='Image'>
+			<img class="mySlides img-construction animated slideInRight img-rounded img-responsive" src="https://images.unsplash.com/photo-1540427013279-b5b47d791282?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" alt='Image'>
+		</div>
+	</div>
+		<a class="pull-right" href="#top"><i class="icon ion-ios-arrow-dropup"></i></a>
+</div>
+</section>
+
 <% include partials/footer %>
