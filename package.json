@@ -12,7 +12,7 @@
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.5",
+    "express-fileupload": "^1.1.9",
     "express-sanitizer": "^1.0.5",
     "express-session": "^1.16.2",
     "install": "^0.13.0",
